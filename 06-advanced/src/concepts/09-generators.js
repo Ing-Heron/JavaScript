@@ -7,17 +7,26 @@ export const generatorFunctionsComponent = ( element ) => {
 
     const myGenerator = myfirstGeneratorFunctions();
 
-    console.log( myGenerator.next() );
-    console.log( myGenerator.next() );
-    console.log( myGenerator.next() );
-    console.log( myGenerator.next() );
-    console.log( myGenerator.next() );
+    const genID = idGenerator();
+    console.log( genID.next() );
+
+    const button = document.createElement('button');
+    button.innerText = 'click me';
+    element.append( button );
+
+    const renderButton = () => {
+        const { value } = genID.next();
+        button.innerText = `click ${ value }`;
+    }
+
+    button.addEventListener('click', renderButton);
+    
 }
 
- function* idGenerator() {
+function* idGenerator() {
     let currentId = 0;
     while(true) {
-        yield ++ currentId;
+        yield ++currentId;
     }
  }
 
