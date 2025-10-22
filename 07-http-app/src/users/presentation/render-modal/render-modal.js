@@ -71,13 +71,11 @@ export const renderModal = ( element, callback ) => {
         for (const [key, value] of formData ) {
             if ( key === 'balance' ) {
                 userLike[key] = +value // Number(value)
-                // console.log( value );
                 continue;
             }
             if ( key === 'isActive' ) {
     
                 userLike[key] = (value === 'on') ? true : false;
-                // userLike[key] = (value === 'off') ? true : false;
                 continue;
             }
             userLike[key] = value;
